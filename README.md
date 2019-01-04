@@ -1,1 +1,1 @@
-# AppBlog
+# GonderGelsin' MVC Project.
