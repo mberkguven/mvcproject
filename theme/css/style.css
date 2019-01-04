@@ -1,0 +1,118 @@
+.jumbotron
+{
+    background-image: url("../img/jumbotron.jpg");
+    background-size: cover;
+    color: white;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+#description{
+    font-size: 15px;
+}
+
+#write-review
+{
+    margin-left: -10px;
+}
+
+#product-price
+{
+    font-size: 26px;
+}
+
+.paneltabs
+{
+    color: #FFFFF9;
+    background-color: #343A40;
+    border-color: white;
+}
+
+.paneltabs:hover
+{
+    color: #FFFFF9;
+}
+
+#detail-list ul li
+{
+    border: 1px solid white;
+}
+
+#jumbotronbtn
+{
+    color: white;
+    background-color: #343A40;
+    border-color: #343A40;
+}
+
+.card-title
+{
+    font-size:16px;
+    font-weight:400;
+    color: #484848;
+    line-height:1.35em;
+    height:34px;
+
+}
+.description {
+    height: 40px;
+    font-size: 12px;
+}
+
+.product-price
+{
+    color: #414141;
+    font-weight:700;
+    font-size: 15px;
+
+}
+
+.product-image {
+    height: 140px !important;
+    width: auto !important;
+    text-align: center !important;
+    
+}
+
+#product-details h1
+{
+    font-size:25px;
+    font-weight:700;
+}
+

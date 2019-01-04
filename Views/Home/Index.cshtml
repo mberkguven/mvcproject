@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Models.ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="jumbotron jumbotron-fluid shadow-lg bg-white">
+    <div class="container">
+        <h1 class="display-4">Hoşgeldin!</h1>
+        <p class="lead">GönderGelsin bir Asp.NET MVC Projesidir.</p>
+        <hr class="my-4">
+        <p>Neler yapabileceğinle ilgili detaylı bilgiyi butona tıklayarak ulaşabilirsin.</p>
+        <a id="jumbotronbtn" class="btn btn-primary btn-lg" href="/Home/Info" role="button">Daha Fazla..</a>
+    </div>
+</div>
+
+
+<div class="container pb-5">
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_ProductList", Model)
+        </div>
+    </div>
+
+</div>

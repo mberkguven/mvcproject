@@ -1,0 +1,114 @@
+﻿@model Abc.MvcWebUI.Models.OrderDetailsModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+    <h2>Sipariş Detayları</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Sipariş ID</label>
+                <text class="col-sm-9">@Model.OrderId</text>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Sipariş Numarası</label>
+                <text class="col-sm-9">@Model.OrderNumber</text>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Sipariş Tarihi</label>
+                <text class="col-sm-9">@Model.OrderDate.ToShortDateString()</text>
+            </div>
+
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["message"]
+                </div>
+            }
+
+
+            <div class="row">
+
+
+                <label class="font-weight-bold col-sm-3">Sipariş Durumu</label>
+                <div class="col-sm-9">
+                    @using (Html.BeginForm("UpdateOrderState", "Order", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(i => i.OrderId)
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @Html.EnumDropDownListFor(i => i.OrderState, "Sipariş Durumunu Seçin", new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-7">
+                                <button class="btn btn-dark" type="submit">Güncelle</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Kullanıcı</label>
+                <text class="col-sm-9">@Model.UserName</text>
+
+            </div>
+
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Adres Başlığı</label>
+                <text class="col-sm-9">@Model.AddressTitle</text>
+
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Adres</label>
+                <text class="col-sm-9">@Model.StreetAdress</text>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Bölge</label>
+                <text class="col-sm-9">@Model.City / @Model.State / @Model.District</text>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-sm-3">Posta Kodu</label>
+                <text class="col-sm-9">@Model.ZipCode</text>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3>Sipariş Edilen Ürünler</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Ürün Resim</th>
+                <th>Ürün Adı</th>
+                <th>Ürün Miktarı</th>
+                <th>Ürün Fiyatı</th>
+                <th>Ürün Detay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetailLines)
+            {
+                <tr>
+                    <td><img src="~/Upload/@item.Image" alt="Ürün Resimi" width="70" /></td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price TL</td>
+                    <td>
+                        <a href="/Home/Details/@item.ProductId" class="btn btn-dark" target="_blank">
+                            <i class="fas fa-info-circle"></i> Ürün Detay
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+

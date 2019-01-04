@@ -1,0 +1,46 @@
+﻿@model Abc.MvcWebUI.Entity.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+    <h5>Bu kategoriyi silmek istediğinize emin misiniz?</h5>
+
+    <div>
+        <hr />
+
+
+        <dl class="dl-horizontal mt-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color row">
+                <input type="submit" value="Kategoriyi Sil" class="btn btn-default col-md-3" /> <div class="col-md-9"></div>
+                @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-dark mt-5" })
+            </div>
+        }
+    </div>
+
+</div>

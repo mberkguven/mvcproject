@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Models.ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container pb-5">
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("CategoryList","Home")
+        </div>
+        <div class="col-md-9">
+
+            @if (Model.Count() == 0)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> Bu kategoriye ait ürün bulunamadı.
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-check-square"></i> <strong>@Model.Count()</strong> adet ürün bulundu.
+                </div>
+            }
+
+            @Html.Partial("_ProductList", Model)
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Entity.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+
+    <h2>Ürün Listesi</h2>
+    <hr />
+    <p>
+        @Html.ActionLink("Yeni Ürün Ekle", "Create",null,new {@class="btn btn-dark" })
+    </p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsApproved)
+            </th>
+            <th width="170px" class="text-center">Ayarlar</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/Upload/@item.Image" alt="Alternate Text" width="70" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="text-center">
+                @if (item.IsHome)
+                {
+                    <label class="label label-success">
+                        <i class="fas fa-check" style="color:green;"></i>
+                    </label>
+                }
+                else
+                {
+                    <label class="label label-danger">
+                        <i class="fas fa-times" style="color:red;"></i>
+                    </label>
+                }
+            </td>
+            <td class="text-center">
+                @if (item.IsApproved)
+                {
+                    <label class="label label-success"> 
+                        <i class="fas fa-check" style="color:green;"></i>
+                    </label>
+                }
+                else
+                {
+                    <label class="label label-danger">
+                        <i class="fas fa-times" style="color:red;"></i>
+                    </label>
+                }
+            </td>
+            <td>
+                <a href="/Product/Edit/@item.Id" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i>
+                    Düzenle
+                </a>
+                <a href="/Product/Delete/@item.Id"class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i>
+                    Sil
+                </a>
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>

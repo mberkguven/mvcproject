@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Entity.Category>
+
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<div id="categoryList" class="list-group">
+
+    <a href="/Home/List" class="list-group-item list-group-item-action">
+        <i class="fa fa-angle-double-right"></i>
+        Bütün Kategoriler
+    </a>
+
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action" style="background-color: #343A40; color:white; border:none;">
+                    <i class="fa fa-angle-double-right"></i>
+                    @item.Name
+                </a>
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action">
+                    <i class="fa fa-angle-double-right"></i>
+                    @item.Name
+                </a>
+            }
+
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action">
+                <i class="fa fa-angle-double-right"></i>
+                @item.Name
+            </a>
+        }
+    }
+
+</div>
